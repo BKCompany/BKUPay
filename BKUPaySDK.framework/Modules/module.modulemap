@@ -1,0 +1,6 @@
+framework module BKUPaySDK {
+  umbrella header "BKUPaySDK.h"
+
+  export *
+  module * { export * }
+}
