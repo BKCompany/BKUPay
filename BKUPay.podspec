@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
                    DESC
   spec.homepage     = "https://github.com/BKCompany/BKUPay"
 
-  spec.license      = "MIT"
+  spec.license      = { :type => "MIT", :file => "LICENSE" }
 
   spec.author       = { "BKCompany" => "1957822705@qq.com"}
   # spec.social_media_url   = "https://twitter.com/"
@@ -20,7 +20,8 @@ Pod::Spec.new do |spec|
 
   spec.source       = { :git => "https://github.com/BKCompany/BKUPay.git", :tag => "#{spec.version}" }
 
-  spec.source_files  = "BKUPaySDK.framework/Headers/.{h}"
+  # spec.source_files  = "BKUPaySDK.framework/Headers/.{h}"
+  spec.ios.vendored_frameworks = "BKUPay/BKUPaySDK.framework"
 
   spec.frameworks  = "UIKit"
 

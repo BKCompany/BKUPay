@@ -12,11 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UPayObject : NSObject
 
-/** 设备的唯一标识, 确保与自己项目中Build setting中的URL Types中设置的一样，(建议：公司名缩写加项目名英文缩写加数字组成， 例如TencentWechat888) */
-@property (nonatomic, copy) NSString *urlScheme;
+/** 设备的唯一标识, 确保与自己项目中Build setting中的URL Types中设置的一样 */
+@property (nonatomic, copy) NSString *appKey;
 
 /** 订单号 */
 @property (nonatomic, copy) NSString *orderNO;
+
+/** 签名串 */
+@property (nonatomic, copy) NSString *sign;
 
 @end
 
