@@ -21,7 +21,7 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => "https://github.com/BKCompany/BKUPay.git", :tag => "#{spec.version}" }
 
   # spec.source_files  = "BKUPaySDK.framework/Headers/.{h}"
-  spec.ios.vendored_frameworks = "BKUPay/BKUPaySDK.framework"
+  spec.ios.vendored_frameworks = "BKUPaySDK.framework"
 
   spec.frameworks  = "UIKit"
 
