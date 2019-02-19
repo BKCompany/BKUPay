@@ -11,6 +11,24 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, BKRespType) {
+    BKRespType_cancle    = 0,  //支付取消
+    BKRespType_success   = 1,  //支付成功
+    BKRespType_faild     = 2,  //支付失败
+    BKRespType_other     = 3,  //未知错误
+};
+
+@protocol SBKUpayDelegate <NSObject>
+
+/**
+ app调起uPay后，收到uPay的回应
+
+ @param BKRespType 支付状态
+ */
+- (void)uPayOnResp:(BKRespType)BKRespType;
+
+@end
+
 @interface UPayApi : NSObject
 
 /**
@@ -21,12 +39,21 @@ NS_ASSUME_NONNULL_BEGIN
 + (BOOL)isUPayAppInstalled;
 
 /**
- 发送请求到UPay
+ 发送请求调起UPay
 
  @param req 具体的发送请求，在调用函数后，请自己释放
- @return 成功返回YES，失败返回NO
+ @param callResult 调起的结果
  */
-+ (BOOL)sendReq:(UPayObject *)req;
++ (void)sendReq:(UPayObject *)req callResult:(void(^)(BOOL success))callResult;
+
+/**
+ 处理uPay通过URL启动App时传递的数据
+
+ @param url uPay启动第三方应用时传递过来的URL
+ @param delegate SBKUpayDelegate对象，用来接收uPay触发的消息
+ @return 成功返回YES，失败返回NO。
+ */
++ (BOOL)handleOpenURL:(NSURL *)url delegate:(id<SBKUpayDelegate>)delegate;
 
 @end
 
